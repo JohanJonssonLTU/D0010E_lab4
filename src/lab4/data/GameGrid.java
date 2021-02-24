@@ -8,6 +8,7 @@ import java.util.Observable;
 
 public class GameGrid extends Observable{
 
+	private int INROW;
 	
 	/**
 	 * Constructor
@@ -23,14 +24,18 @@ public class GameGrid extends Observable{
 	 * @param y The y coordinate
 	 * @return the value of the specified location
 	 */
-	public int getLocation(int x, int y){}
+	public int getLocation(int x, int y){
+		return 0;
+	}
 	
 	/**
 	 * Returns the size of the grid
 	 * 
 	 * @return the grid size
 	 */
-	public int getSize(){}
+	public int getSize(){
+		return 0;
+	}
 	
 	/**
 	 * Enters a move in the game grid
@@ -40,7 +45,9 @@ public class GameGrid extends Observable{
 	 * @param player
 	 * @return true if the insertion worked, false otherwise
 	 */
-	public boolean move(int x, int y, int player){}
+	public boolean move(int x, int y, int player){
+		return false;
+	}
 	
 	/**
 	 * Clears the grid of pieces
@@ -53,7 +60,9 @@ public class GameGrid extends Observable{
 	 * @param player the player to check for
 	 * @return true if player has 5 in row, false otherwise
 	 */
-	public boolean isWinner(int player){}
+	public boolean isWinner(int player){
+		return false;
+	}
 	
 	
 }
