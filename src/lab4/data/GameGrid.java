@@ -163,13 +163,13 @@ public class GameGrid extends Observable{
 		return false;
 	}
 	
-	public String toString(ArrayList<ArrayList<Integer>> grid) {
+	public String toString() {
 		
 		String theMatrix = "";
 		
-		for (int i = 0; i < grid.size(); i++) {
-			for (int j = 0; j < grid.get(i).size(); j++) {
-				theMatrix += Integer.toString(grid.get(i).get(j)) + " ";
+		for (int i = 0; i < my_grid.size(); i++) {
+			for (int j = 0; j < my_grid.get(i).size(); j++) {
+				theMatrix += Integer.toString(my_grid.get(i).get(j)) + " ";
 			}
 			theMatrix += "\n";
 		}
