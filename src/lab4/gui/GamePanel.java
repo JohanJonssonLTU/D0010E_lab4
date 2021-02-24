@@ -53,32 +53,32 @@ public class GamePanel extends JPanel implements Observer{
 		
 		super.paintComponent(g);
 		
-		for (int y = 0; y < grid.getSize(); y++) {
+		for (int row = 0; row < grid.getSize(); row++) {
 			
-			for (int x = 0; x < grid.getSize(); x++) {
+			for (int column = 0; column < grid.getSize(); column++) {
 				
-				if (grid.getLocation(y, x) == 1) {
+				if (grid.getLocation(row, column) == 0) {
 					g.setColor(Color.WHITE);
-					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-					g.fillRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.fillRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
 				}
 				
-				if (grid.getLocation(y, x) == 2) {
+				if (grid.getLocation(row, column) == 1) {
 					g.setColor(Color.WHITE);
-					g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-					g.fillRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.fillRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.BLACK);
-					g.drawOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-					g.fillOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+					g.drawOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.fillOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
 				}
 				
-				if (grid.getLocation(y, x) == 3) {
+				if (grid.getLocation(row, column) == -1) {
 					g.setColor(Color.WHITE);
-					g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-					g.fillRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.fillRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.WHITE);
-					g.drawOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-					g.fillOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+					g.drawOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.fillOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
 				}
 					
 			}

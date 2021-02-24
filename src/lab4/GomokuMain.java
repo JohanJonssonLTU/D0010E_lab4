@@ -8,7 +8,7 @@ public class GomokuMain {
 
 	public static void main(String[] args) {
 		
-		int portNumber = 4003;
+		int portNumber = 4000;
 		
 		if (args != null) {
 			portNumber = Integer.parseInt(args[0]);
