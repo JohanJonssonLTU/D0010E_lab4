@@ -8,11 +8,11 @@ public class GomokuMain {
 
 	public static void main(String[] args) {
 		
-		int portNumber = 4000;
+		int portNumber = 4003;
 		
-//		if (args != null) {
-//			portNumber = Integer.valueOf(args[0]);
-//		}
+		if (args != null) {
+			portNumber = Integer.parseInt(args[0]);
+		}
 		
 		GomokuClient gomokuClient = new GomokuClient(portNumber);
 		GomokuGameState gomokuGameState = new GomokuGameState(gomokuClient);

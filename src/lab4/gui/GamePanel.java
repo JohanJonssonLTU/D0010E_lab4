@@ -55,25 +55,7 @@ public class GamePanel extends JPanel implements Observer{
 		
 		for (int y = 0; y < grid.getSize(); y++) {
 			
-			if (grid.getLocation(y, 0) == 1) {
-				g.setColor(Color.WHITE);
-				g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-				g.fillRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-			}
-			
-			if (grid.getLocation(y, 0) == 2) {
-				g.setColor(Color.BLACK);
-				g.drawOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-				g.fillOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-			}
-			
-			if (grid.getLocation(y, 0) == 3) {
-				g.setColor(Color.WHITE);
-				g.drawOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-				g.fillOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-			}
-			
-			for (int x = 1; x < grid.getSize(); x++) {
+			for (int x = 0; x < grid.getSize(); x++) {
 				
 				if (grid.getLocation(y, x) == 1) {
 					g.setColor(Color.WHITE);
@@ -82,12 +64,18 @@ public class GamePanel extends JPanel implements Observer{
 				}
 				
 				if (grid.getLocation(y, x) == 2) {
+					g.setColor(Color.WHITE);
+					g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+					g.fillRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.BLACK);
 					g.drawOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.fillOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 				}
 				
 				if (grid.getLocation(y, x) == 3) {
+					g.setColor(Color.WHITE);
+					g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+					g.fillRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.WHITE);
 					g.drawOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.fillOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
