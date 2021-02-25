@@ -40,7 +40,6 @@ public class GomokuGameState extends Observable implements Observer{
 		gameGrid = new GameGrid(DEFAULT_SIZE);
 	}
 	
-
 	/**
 	 * Returns the message string
 	 * 
@@ -57,41 +56,6 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public GameGrid getGameGrid(){
 		return gameGrid;
-	}
-
-	/**
-	 * This player makes a move at a specified location
-	 * 
-	 * @param x the x coordinate
-	 * @param y the y coordinate
-	 */
-	public void move(int x, int y){
-		
-		gameGrid.move(x, y, 1);
-		
-		if (this.client.getConnectionStatus() == 0) {
-			message = "No connection";
-		} else if (this.currentState != MY_TURN) {
-			message = "It's not your turn yet!";
-		} else if (currentState == 0) {
-			message = "No game in progress!";
-		} else if (this.gameGrid.getLocation(x, y) != 0) {
-			message = "This spot is not empty!";
-		} else {
-			this.client.sendMoveMessage(x, y);
-			message = "A move has been made.";
-			
-			if (this.gameGrid.isWinner(1)){
-				this.client.sendNewGameMessage();
-				message = "We've got ourselves a winner!";
-				currentState = IS_FINISHED;
-			}
-			
-		}
-		setChanged();
-		notifyObservers();
-//		System.out.println("My turn");
-//		System.out.println(gameGrid);
 	}
 	
 	/**
@@ -121,6 +85,69 @@ public class GomokuGameState extends Observable implements Observer{
 	}
 
 	/**
+	 * This player makes a move at a specified location
+	 * 
+	 * @param x the x coordinate
+	 * @param y the y coordinate
+	 */
+	public void move(int x, int y){
+		
+		gameGrid.move(x, y, 1);
+		currentState = OTHER_TURN;
+		
+		if (gameGrid.isWinner(1)){
+			client.sendNewGameMessage();
+			message = "We've got ourselves a winner!";
+			currentState = IS_FINISHED;
+		}
+		
+		if (client.getConnectionStatus() == 0) {
+			message = "No connection";
+		} else if (currentState != MY_TURN) {
+			message = "It's not your turn yet!";
+		} else if (currentState == 0) {
+			message = "No game in progress!";
+		} else if (gameGrid.getLocation(x, y) != 0) {
+			message = "This spot is not empty!";
+		} else {
+			client.sendMoveMessage(x, y);
+			message = "A move has been made.";
+			
+			if (gameGrid.isWinner(1)){
+				client.sendNewGameMessage();
+				message = "We've got ourselves a winner!";
+				currentState = IS_FINISHED;
+			}
+			
+		}
+		setChanged();
+		notifyObservers();
+//		System.out.println("My turn");
+//		System.out.println(gameGrid);
+	}
+	
+	/**
+	 * The player receives a move from the other player
+	 * 
+	 * @param x The x coordinate of the move
+	 * @param y The y coordinate of the move
+	 */
+	public void receivedMove(int x, int y) {
+
+		gameGrid.move(x,y,-1);
+		currentState = MY_TURN;
+		
+		if (gameGrid.isWinner(-1)) {
+			message = "You Loose!";
+			currentState = IS_FINISHED;
+		}
+		setChanged();
+		notifyObservers();
+//		System.out.println("Others turn");
+//		System.out.println(gameGrid);
+	}
+	
+	/**
 	 * The connection to the other player is lost, 
 	 * so the game is interrupted
 	 */
@@ -143,26 +170,6 @@ public class GomokuGameState extends Observable implements Observer{
 		setChanged();
 	}
 	
-	/**
-	 * The player receives a move from the other player
-	 * 
-	 * @param x The x coordinate of the move
-	 * @param y The y coordinate of the move
-	 */
-	public void receivedMove(int x, int y) {
-
-		this.gameGrid.move(x,y,-1);
-
-		if (this.gameGrid.isWinner(-1)) {
-			message = "You Loose!";
-			currentState = IS_FINISHED;
-		}
-		setChanged();
-		notifyObservers();
-//		System.out.println("Others turn");
-//		System.out.println(gameGrid);
-	}
-	
 	public void update(Observable o, Object arg) {
 		
 		switch(client.getConnectionStatus()){
@@ -177,7 +184,6 @@ public class GomokuGameState extends Observable implements Observer{
 		}
 		setChanged();
 		notifyObservers();
-		
 		
 	}
 	
