@@ -8,13 +8,13 @@ public class GomokuMain {
 
 	public static void main(String[] args) {
 		
-		int portNumber = 4000;
+		int portNumber;
 		
-//		if (args[0] == null) {
-//			portNumber = 4000;
-//		} else {
-//			portNumber = Integer.parseInt(args[0]);
-//		}
+		try {
+			portNumber = Integer.parseInt(args[0]); 
+		} catch (ArrayIndexOutOfBoundsException e) {
+			portNumber = 4001;
+		}
 		
 		GomokuClient gomokuClient = new GomokuClient(portNumber);
 		GomokuGameState gomokuGameState = new GomokuGameState(gomokuClient);

@@ -8,7 +8,7 @@ import java.util.Observable;
 
 public class GameGrid extends Observable{
 	
-	private ArrayList<ArrayList<Integer>> my_grid = new ArrayList<>();
+	private ArrayList<ArrayList<Integer>> my_grid;
 	private int size;
 	
 	public static final int EMPTY = 0;
@@ -176,6 +176,11 @@ public class GameGrid extends Observable{
 		return false;
 	}
 	
+	/**
+	 * Returns a string drawing a grid in console of 2-dimensional ArrayList contents.
+	 * 
+	 * @author jj
+	 */
 	public String toString() {
 		
 		String theMatrix = "";

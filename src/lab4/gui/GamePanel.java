@@ -12,6 +12,8 @@ import lab4.data.GameGrid;
 
 /**
  * A panel providing a graphical view of the game board
+ * 
+ * @author jj
  */
 
 public class GamePanel extends JPanel implements Observer{
@@ -42,7 +44,8 @@ public class GamePanel extends JPanel implements Observer{
 
 	/**
 	 * Returns a grid position given pixel coordinates
-	 * of the panel
+	 * of the panel, calculating integer values for x and y through division with the grid 
+	 * square dimensions 
 	 * 
 	 * @param x the x coordinates
 	 * @param y the y coordinates
@@ -60,6 +63,11 @@ public class GamePanel extends JPanel implements Observer{
 		this.repaint();
 	}
 	
+	/**
+	 * Iterates over a 2-dimensional ArrayList and paints adjecent squares according to indices. 
+	 * 
+	 * @author jj
+	 */
 	public void paintComponent(Graphics g){
 		
 		System.out.println("GamePanel.paintComponent()");

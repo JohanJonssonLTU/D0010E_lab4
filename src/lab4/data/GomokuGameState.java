@@ -141,7 +141,7 @@ public class GomokuGameState extends Observable implements Observer{
 		
 		System.out.println("GomokuGameState().receivedMove()");
 
-		gameGrid.move(x,y,-1);
+		gameGrid.move(x, y,-1);
 		currentState = MY_TURN;
 		
 		if (gameGrid.isWinner(-1)) {
@@ -162,7 +162,8 @@ public class GomokuGameState extends Observable implements Observer{
 		
 		System.out.println("GomokuGameState().otherGuyLeft()");
 		
-		this.gameGrid.clearGrid();
+		
+		gameGrid.clearGrid();
 		currentState = NOT_STARTED;
 		message = "The other player has disconnected.";
 		notifyObservers();
@@ -176,7 +177,8 @@ public class GomokuGameState extends Observable implements Observer{
 		
 		System.out.println("GomokuGameState().disconnect()");
 		
-		this.gameGrid.clearGrid();
+		client.disconnect();
+		gameGrid.clearGrid();
 		currentState = NOT_STARTED;
 		message = "You have been disconnected.";
 		notifyObservers();
@@ -202,6 +204,11 @@ public class GomokuGameState extends Observable implements Observer{
 		
 	}
 	
+	/**
+	 * Returns a string containing class member data.
+	 * 
+	 * @author jj
+	 */
 	public String toString() {
 		return 
 			"currentState = " + currentState + "\n" +

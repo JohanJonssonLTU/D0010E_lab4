@@ -35,6 +35,8 @@ public class GomokuGUI implements Observer{
 	
 	/**
 	 * The constructor
+	 * Containing all data for the layout of the SpringLayout organizing the main window of Gomoku.
+	 * Adds listeners to buttons and mouse input.
 	 * 
 	 * @param g   The game state that the GUI will visualize
 	 * @param c   The client that is responsible for the communication
@@ -49,9 +51,10 @@ public class GomokuGUI implements Observer{
 		this.messageLabel = new JLabel(gamestate.getMessageString());
 		
 		JFrame frame = new JFrame("Gumoku");
+		frame.setMinimumSize(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocation(700,200);
-		frame.setVisible(true);
+//		frame.setVisible(true);
 		
 		JPanel panel = new JPanel();
 		GamePanel gamePanel = new GamePanel(gamestate.getGameGrid());
@@ -63,11 +66,11 @@ public class GomokuGUI implements Observer{
 		panel.add(messageLabel);
 		frame.setContentPane(panel);
 		
-		frame.pack();
+		frame.pack();		
 		
 		SpringLayout layout = new SpringLayout();
 		panel.setLayout(layout);
-		
+
 		layout.putConstraint(SpringLayout.NORTH, gamePanel, 10, SpringLayout.NORTH, panel);
 		
 		layout.putConstraint(SpringLayout.NORTH, connectButton, 10, SpringLayout.SOUTH, gamePanel);
@@ -81,6 +84,9 @@ public class GomokuGUI implements Observer{
 		
 		layout.putConstraint(SpringLayout.NORTH, messageLabel, 10, SpringLayout.SOUTH, connectButton);
 		layout.putConstraint(SpringLayout.WEST, messageLabel, 10, SpringLayout.WEST, panel);
+		
+		frame.setVisible(true);
+//		frame.pack();
 		
 		connectButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -111,6 +117,8 @@ public class GomokuGUI implements Observer{
 		
 		client.addObserver(this);
 		gamestate.addObserver(this);
+		
+//		frame.pack();
 				
 	}
 	
