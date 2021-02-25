@@ -13,7 +13,7 @@ public class GomokuMain {
 		try {
 			portNumber = Integer.parseInt(args[0]); 
 		} catch (ArrayIndexOutOfBoundsException e) {
-			portNumber = 4001;
+			portNumber = 4000;
 		}
 		
 		GomokuClient gomokuClient = new GomokuClient(portNumber);

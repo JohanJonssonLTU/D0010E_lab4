@@ -127,8 +127,8 @@ public class GomokuGameState extends Observable implements Observer{
 		}
 		setChanged();
 		notifyObservers();
-//		System.out.println("My turn");
-//		System.out.println(gameGrid);
+		System.out.println("My turn");
+		System.out.println(gameGrid);
 	}
 	
 	/**
@@ -150,8 +150,8 @@ public class GomokuGameState extends Observable implements Observer{
 		}
 		setChanged();
 		notifyObservers();
-//		System.out.println("Others turn");
-//		System.out.println(gameGrid);
+		System.out.println("Others turn");
+		System.out.println(gameGrid);
 	}
 	
 	/**
@@ -162,7 +162,7 @@ public class GomokuGameState extends Observable implements Observer{
 		
 		System.out.println("GomokuGameState().otherGuyLeft()");
 		
-		
+		client.disconnect();
 		gameGrid.clearGrid();
 		currentState = NOT_STARTED;
 		message = "The other player has disconnected.";

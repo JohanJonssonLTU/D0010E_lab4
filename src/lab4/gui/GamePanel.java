@@ -70,8 +70,8 @@ public class GamePanel extends JPanel implements Observer{
 	 */
 	public void paintComponent(Graphics g){
 		
-		System.out.println("GamePanel.paintComponent()");
-		System.out.println(grid);
+//		System.out.println("GamePanel.paintComponent()");
+//		System.out.println(grid);
 		
 		super.paintComponent(g);
 		
