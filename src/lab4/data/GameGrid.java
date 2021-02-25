@@ -55,11 +55,7 @@ public class GameGrid extends Observable{
 	
 	/**
 	 * Enters a move in the game grid
-	 *
-	 *
-	 * -รถ--1112
-	 *
-	 * 32
+	 * 
 	 * @param x the x position
 	 * @param y the y position
 	 * @param player

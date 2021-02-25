@@ -10,9 +10,11 @@ public class GomokuMain {
 		
 		int portNumber = 4000;
 		
-		if (args != null) {
-			portNumber = Integer.parseInt(args[0]);
-		}
+//		if (args[0] == null) {
+//			portNumber = 4000;
+//		} else {
+//			portNumber = Integer.parseInt(args[0]);
+//		}
 		
 		GomokuClient gomokuClient = new GomokuClient(portNumber);
 		GomokuGameState gomokuGameState = new GomokuGameState(gomokuClient);
