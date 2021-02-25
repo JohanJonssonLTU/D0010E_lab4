@@ -9,6 +9,7 @@ import java.awt.event.MouseWheelEvent;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -50,14 +51,17 @@ public class GomokuGUI implements Observer{
 
 		this.messageLabel = new JLabel(gamestate.getMessageString());
 		
+		GamePanel gamePanel = new GamePanel(gamestate.getGameGrid());
+		
 		JFrame frame = new JFrame("Gumoku");
-		frame.setMinimumSize(null);
+		Dimension d = new Dimension(gamePanel.UNIT_SIZE * gamestate.getGameGrid().getSize() + 35, 
+			gamePanel.UNIT_SIZE * gamestate.getGameGrid().getSize() + 120);
+		frame.setMinimumSize(d);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocation(700,200);
-//		frame.setVisible(true);
+		frame.setVisible(true);
 		
 		JPanel panel = new JPanel();
-		GamePanel gamePanel = new GamePanel(gamestate.getGameGrid());
 		
 		panel.add(gamePanel);
 		panel.add(connectButton);
@@ -66,15 +70,16 @@ public class GomokuGUI implements Observer{
 		panel.add(messageLabel);
 		frame.setContentPane(panel);
 		
-		frame.pack();		
+//		frame.pack();		
 		
 		SpringLayout layout = new SpringLayout();
 		panel.setLayout(layout);
 
 		layout.putConstraint(SpringLayout.NORTH, gamePanel, 10, SpringLayout.NORTH, panel);
+		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, gamePanel, 0, SpringLayout.HORIZONTAL_CENTER, panel);
 		
 		layout.putConstraint(SpringLayout.NORTH, connectButton, 10, SpringLayout.SOUTH, gamePanel);
-		layout.putConstraint(SpringLayout.WEST, connectButton, 5, SpringLayout.WEST, panel);
+		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, connectButton, -107, SpringLayout.HORIZONTAL_CENTER, gamePanel);
 		
 		layout.putConstraint(SpringLayout.NORTH, newGameButton, 10, SpringLayout.SOUTH, gamePanel);
 		layout.putConstraint(SpringLayout.WEST, newGameButton, 10, SpringLayout.EAST, connectButton);
@@ -83,9 +88,12 @@ public class GomokuGUI implements Observer{
 		layout.putConstraint(SpringLayout.WEST, disconnectButton, 10, SpringLayout.EAST, newGameButton);
 		
 		layout.putConstraint(SpringLayout.NORTH, messageLabel, 10, SpringLayout.SOUTH, connectButton);
-		layout.putConstraint(SpringLayout.WEST, messageLabel, 10, SpringLayout.WEST, panel);
+		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, messageLabel, 0, SpringLayout.HORIZONTAL_CENTER, newGameButton);
+//		layout.putConstraint(SpringLayout.WEST, messageLabel, 10, SpringLayout.WEST, panel);
 		
-		frame.setVisible(true);
+//		BoxLayout boxLayout = new BoxLayout(panel, BoxLayout.Y_AXIS);
+//		panel.setLayout(boxLayout);
+		
 //		frame.pack();
 		
 		connectButton.addActionListener(new ActionListener() {

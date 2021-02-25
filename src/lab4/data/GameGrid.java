@@ -50,7 +50,7 @@ public class GameGrid extends Observable{
 	 * @return the grid size
 	 */
 	public int getSize(){
-		return this.size;
+		return size;
 	}
 	
 	/**
@@ -63,8 +63,8 @@ public class GameGrid extends Observable{
 	 */
 	public boolean move(int x, int y, int player){
 		
-		if (my_grid.get(y).get(x) == EMPTY) {
-			my_grid.get(y).set(x, player);
+		if (my_grid.get(x).get(y) == EMPTY) {
+			my_grid.get(x).set(y, player);
 			notifyObservers();
 			setChanged();
 			return true;

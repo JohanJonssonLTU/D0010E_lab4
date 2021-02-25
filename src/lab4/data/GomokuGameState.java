@@ -67,6 +67,7 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public void newGame(){
 		gameGrid.clearGrid();
+		client.sendNewGameMessage();
 		currentState = OTHER_TURN;
 		message = "New game, the other persons turn";
 		// SendNew någonting
@@ -116,7 +117,7 @@ public class GomokuGameState extends Observable implements Observer{
 			gameGrid.move(x, y, 1);
 			currentState = OTHER_TURN;
 			client.sendMoveMessage(x, y);
-			message = "A move has been made.";
+			message = "Opponents turn.";
 			
 			if (gameGrid.isWinner(1)){
 				client.sendNewGameMessage();
@@ -143,6 +144,7 @@ public class GomokuGameState extends Observable implements Observer{
 
 		gameGrid.move(x, y,-1);
 		currentState = MY_TURN;
+		message = "Your turn";
 		
 		if (gameGrid.isWinner(-1)) {
 			message = "You Loose!";
