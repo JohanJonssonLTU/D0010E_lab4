@@ -102,12 +102,10 @@ public class GomokuGUI implements Observer{
 		});
 		
 		gamePanel.addMouseListener(new MouseAdapter() {
-			public void mouseClicked() {
-				
+			public void mouseClicked(MouseEvent e) {
+				gamestate.newGame();
 			}
 		});
-		
-		
 		
 		client.addObserver(this);
 		gamestate.addObserver(this);

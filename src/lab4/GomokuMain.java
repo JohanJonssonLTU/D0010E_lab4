@@ -66,17 +66,17 @@ public class GomokuMain {
 		System.out.println("Others turn 4");
 		System.out.println(gomokuGameState);
 		System.out.println(gomokuGameState.getGameGrid());
-//		
-//		//Move 5
-//		gomokuGameState.move(6, 6);
-//		System.out.println("My turn 5");
-//		System.out.println(gomokuGameState);
-//		System.out.println(gomokuGameState.getGameGrid());
-//		
-//		gomokuGameState.receivedMove(7,6);
-//		System.out.println("Others turn 5");
-//		System.out.println(gomokuGameState);
-//		System.out.println(gomokuGameState.getGameGrid());
+		
+		//Move 5
+		gomokuGameState.move(6, 6);
+		System.out.println("My turn 5");
+		System.out.println(gomokuGameState);
+		System.out.println(gomokuGameState.getGameGrid());
+		
+		gomokuGameState.receivedMove(7,6);
+		System.out.println("Others turn 5");
+		System.out.println(gomokuGameState);
+		System.out.println(gomokuGameState.getGameGrid());
 		
 	}
 
