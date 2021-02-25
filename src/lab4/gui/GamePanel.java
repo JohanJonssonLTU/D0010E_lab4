@@ -62,44 +62,47 @@ public class GamePanel extends JPanel implements Observer{
 	public void paintComponent(Graphics g){
 		
 		System.out.println("GamePanel.paintComponent()");
+		System.out.println(grid);
 		
 		super.paintComponent(g);
 		
-		g.setColor(Color.WHITE);
-		g.drawRect(5, 5, 100, 100);
-		g.fillRect(5, 5, 100, 100);
+//		g.setColor(Color.WHITE);
+//		g.drawRect(5, 5, 100, 100);
+//		g.fillRect(5, 5, 100, 100);
 		
-//		for (int row = 0; row < grid.getSize(); row++) {
-//			
-//			for (int column = 0; column < grid.getSize(); column++) {
-//				
-//				if (grid.getLocation(row, column) == 0) {
-//					g.setColor(Color.WHITE);
-//					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-//					g.fillRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-//				}
-//				
-//				if (grid.getLocation(row, column) == 1) {
-//					g.setColor(Color.WHITE);
-//					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-//					g.fillRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-//					g.setColor(Color.BLACK);
+		for (int row = 0; row < grid.getSize(); row++) {
+			
+			for (int column = 0; column < grid.getSize(); column++) {
+				
+				if (grid.getLocation(row, column) == 0) {
+					g.setColor(Color.BLACK);
+					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.setColor(Color.WHITE);
+					g.fillRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE-1, UNIT_SIZE-1);
+				}
+				
+				if (grid.getLocation(row, column) == 1) {
+					g.setColor(Color.WHITE);
+					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.fillRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.setColor(Color.BLACK);
 //					g.drawOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-//					g.fillOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-//				}
-//				
-//				if (grid.getLocation(row, column) == -1) {
-//					g.setColor(Color.WHITE);
-//					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-//					g.fillRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-//					g.setColor(Color.WHITE);
-//					g.drawOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-//					g.fillOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-//				}
-//					
-//			}
-//			
-//		}
+					g.fillOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+				}
+				
+				if (grid.getLocation(row, column) == -1) {
+					g.setColor(Color.WHITE);
+					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.fillRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.setColor(Color.BLACK);
+					g.drawOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.setColor(Color.WHITE);
+					g.fillOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+				}
+					
+			}
+			
+		}
 		
 	}
 	

@@ -16,23 +16,23 @@ public class GomokuMain {
 		
 		GomokuClient gomokuClient = new GomokuClient(portNumber);
 		GomokuGameState gomokuGameState = new GomokuGameState(gomokuClient);
-		GomokuGUI gomokuGUI = new GomokuGUI(gomokuGameState, gomokuClient);
 		
 		System.out.println("init");
 		System.out.println(gomokuGameState);
 		System.out.println(gomokuGameState.getGameGrid());
 		
+		GomokuGUI gomokuGUI = new GomokuGUI(gomokuGameState, gomokuClient);
 		
 		//Move 1
-//		gomokuGameState.move(2, 2);
-//		System.out.println("My turn 1");
-//		System.out.println(gomokuGameState);
-//		System.out.println(gomokuGameState.getGameGrid());
-//		
-//		gomokuGameState.receivedMove(3,2);
-//		System.out.println("Others turn 1");
-//		System.out.println(gomokuGameState);
-//		System.out.println(gomokuGameState.getGameGrid());
+		gomokuGameState.move(2, 2);
+		System.out.println("My turn 1");
+		System.out.println(gomokuGameState);
+		System.out.println(gomokuGameState.getGameGrid());
+		
+		gomokuGameState.receivedMove(3,2);
+		System.out.println("Others turn 1");
+		System.out.println(gomokuGameState);
+		System.out.println(gomokuGameState.getGameGrid());
 //		
 //		//Move 2
 //		gomokuGameState.move(3, 3);
