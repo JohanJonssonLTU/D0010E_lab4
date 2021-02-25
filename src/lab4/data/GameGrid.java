@@ -22,17 +22,20 @@ public class GameGrid extends Observable{
 	 * @param size The width/height of the game grid
 	 */
 	public GameGrid(int size){
+		
+		System.out.println("new GameGrid");
 
 		this.size = size;
 		
-		for (int row = 0; row < size; row++){
-			my_grid.add(row, new ArrayList<Integer>());
-//			System.out.println("row");
-			for (int column = 0; column < size; column++) {
-				my_grid.get(row).add(column, EMPTY);
-//				System.out.println("column");
-			}
-		}
+//		for (int row = 0; row < size; row++){
+//			my_grid.add(row, new ArrayList<Integer>());
+////			System.out.println("row");
+//			for (int column = 0; column < size; column++) {
+//				my_grid.get(row).add(column, EMPTY);
+////				System.out.println("column");
+//			}
+//		}
+		clearGrid();
 		
 //		System.out.println("init");
 		

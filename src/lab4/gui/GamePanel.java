@@ -25,6 +25,9 @@ public class GamePanel extends JPanel implements Observer{
 	 * @param grid The grid that is to be displayed
 	 */
 	public GamePanel(GameGrid grid){
+		
+		System.out.println("new GamePanel");
+		
 		this.grid = grid;
 		grid.addObserver(this);
 		Dimension d = new Dimension(grid.getSize()*UNIT_SIZE+1, grid.getSize()*UNIT_SIZE+1);
@@ -33,6 +36,8 @@ public class GamePanel extends JPanel implements Observer{
 		this.setBackground(Color.WHITE);
 		
 		System.out.println("GamePanel()." + d);
+		System.out.println("GamePanel().setBackground(" + Color.white + ")");
+		
 	}
 
 	/**
@@ -48,6 +53,9 @@ public class GamePanel extends JPanel implements Observer{
 	}
 	
 	public void update(Observable arg0, Object arg1) {
+		
+		System.out.println("GamePanel.update()");
+		
 		this.repaint();
 	}
 	

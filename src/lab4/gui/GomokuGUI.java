@@ -9,6 +9,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -39,6 +40,8 @@ public class GomokuGUI implements Observer{
 	 */
 	public GomokuGUI(GomokuGameState g, GomokuClient c){
 		
+		System.out.println("new GomokoGUI");
+		
 		this.client = c;
 		this.gamestate = g;
 
@@ -52,7 +55,7 @@ public class GomokuGUI implements Observer{
 		frame.setVisible(true);
 		
 		JPanel panel = new JPanel();
-		GamePanel gamePanel = new GamePanel(gamestate.getGameGrid());
+		JComponent gamePanel = new GamePanel(gamestate.getGameGrid());
 		
 		panel.add(gamePanel);
 		panel.add(connectButton);

@@ -34,6 +34,9 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @param gc The client used to communicate with the other player
 	 */
 	public GomokuGameState(GomokuClient gc){
+		
+		System.out.println("new GomokuGameState");
+		
 		client = gc;
 		client.addObserver(this);
 		gc.setGameState(this);
