@@ -49,9 +49,8 @@ public class GamePanel extends JPanel implements Observer{
 	 * @return an integer array containing the [x, y] grid position
 	 */
 	public int[] getGridPosition(int x, int y){
-		int side = UNIT_SIZE * grid.getSize();
-		grid.getLocation(x, y);
-		return null;
+		int[] gridPosition = {x / UNIT_SIZE, y / UNIT_SIZE};
+		return gridPosition;
 	}
 	
 	public void update(Observable arg0, Object arg1) {

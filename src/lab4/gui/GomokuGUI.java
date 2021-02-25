@@ -104,11 +104,10 @@ public class GomokuGUI implements Observer{
 		gamePanel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				
-				int x = e.getY()/gamestate.getGameGrid().getSize();
-				int y = e.getX()/gamestate.getGameGrid().getSize();
+				int[] coordinates = gamePanel.getGridPosition(e.getY(), e.getX());
 				
 				gamestate.newGame();
-				gamestate.move(x, y);
+				gamestate.move(coordinates[0], coordinates[1]);
 			}
 		});
 		
