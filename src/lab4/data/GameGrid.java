@@ -105,8 +105,8 @@ public class GameGrid extends Observable{
 		int rowCounter = 0;
 		int columnCounter = 0;
 		int diagonalCounter = 0;
-		int newRow;
-		int newColu;
+		int newRow = 0;
+		int newColu = 0;
 
 		for (int row = 0; row < size; row++) {
 			

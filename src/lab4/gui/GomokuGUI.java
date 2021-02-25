@@ -4,21 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseWheelEvent;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import lab4.client.GomokuClient;
-import lab4.data.GameGrid;
 import lab4.data.GomokuGameState;
 
 /*
@@ -79,7 +74,8 @@ public class GomokuGUI implements Observer{
 		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, gamePanel, 0, SpringLayout.HORIZONTAL_CENTER, panel);
 		
 		layout.putConstraint(SpringLayout.NORTH, connectButton, 10, SpringLayout.SOUTH, gamePanel);
-		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, connectButton, -107, SpringLayout.HORIZONTAL_CENTER, gamePanel);
+		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, connectButton, -107, 
+			SpringLayout.HORIZONTAL_CENTER, gamePanel);
 		
 		layout.putConstraint(SpringLayout.NORTH, newGameButton, 10, SpringLayout.SOUTH, gamePanel);
 		layout.putConstraint(SpringLayout.WEST, newGameButton, 10, SpringLayout.EAST, connectButton);
@@ -88,13 +84,8 @@ public class GomokuGUI implements Observer{
 		layout.putConstraint(SpringLayout.WEST, disconnectButton, 10, SpringLayout.EAST, newGameButton);
 		
 		layout.putConstraint(SpringLayout.NORTH, messageLabel, 10, SpringLayout.SOUTH, connectButton);
-		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, messageLabel, 0, SpringLayout.HORIZONTAL_CENTER, newGameButton);
-//		layout.putConstraint(SpringLayout.WEST, messageLabel, 10, SpringLayout.WEST, panel);
-		
-//		BoxLayout boxLayout = new BoxLayout(panel, BoxLayout.Y_AXIS);
-//		panel.setLayout(boxLayout);
-		
-//		frame.pack();
+		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, messageLabel, 0, 
+			SpringLayout.HORIZONTAL_CENTER, newGameButton);
 		
 		connectButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
