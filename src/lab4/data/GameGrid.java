@@ -33,6 +33,7 @@ public class GameGrid extends Observable{
 			}
 		}
 		
+		System.out.println("init");
 		System.out.println(this);
 		
 	}
@@ -106,38 +107,46 @@ public class GameGrid extends Observable{
 		int rowCounter = 0;
 		int columnCounter = 0;
 		int diagonalCounter = 0;
+		int newRow;
+		int newColu;
 
-		for (int row = 0; row <= size; row++) {
+		for (int row = 0; row < size; row++) {
+			
 			rowCounter = 0;
 			columnCounter = 0;
-			for (int column = 0; column <= size; column++) {
+			
+			for (int column = 0; column < size; column++) {
 
 				if (my_grid.get(row).get(column) == player) {
-
 					rowCounter++;
 				} else {
-
 					rowCounter = 0;
 				}
+				
 				if (my_grid.get(column).get(row) == player) {
-
 					columnCounter++;
 				} else {
-
 					columnCounter = 0;
 				}
+				
 				if (rowCounter == INROW){
-
 					return true;
 				}
+				
 			}
+			
 		}
-		for (int row = 0; row <= size; row++) {
-			for (int colu = 0; colu <= size; colu++) {
+		
+		for (int row = 0; row < size; row++) {
+			
+			for (int colu = 0; colu < size; colu++) {
+				
 				diagonalCounter = 0;
-				int newRow = row;
-				int newColu = colu;
+				newRow = row;
+				newColu = colu;
+				
 				try {
+					
 					while (my_grid.get(newRow).get(newColu) == player) {
 						diagonalCounter++;
 						newRow++;
@@ -146,9 +155,13 @@ public class GameGrid extends Observable{
 							return true;
 						}
 					}
+					
 				} catch (Exception e) {}
+				
 				diagonalCounter = 0;
+				
 				try {
+					
 					while (my_grid.get(newRow).get(newColu) == player) {
 						diagonalCounter++;
 						newRow++;
@@ -157,7 +170,9 @@ public class GameGrid extends Observable{
 							return true;
 						}
 					}
+					
 				} catch (Exception e) {}
+				
 			}
 		}
 		return false;

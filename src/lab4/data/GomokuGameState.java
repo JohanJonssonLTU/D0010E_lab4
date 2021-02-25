@@ -66,6 +66,7 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @param y the y coordinate
 	 */
 	public void move(int x, int y){
+		
 		if (this.client.getConnectionStatus() == 0) {
 			message = "No connection";
 		} else if (this.currentState != MY_TURN) {
@@ -75,14 +76,18 @@ public class GomokuGameState extends Observable implements Observer{
 		} else {
 			this.client.sendNewGameMessage();
 			message = "A move has been made.";
+			
 			if (this.gameGrid.isWinner(1)){
 				this.client.sendNewGameMessage();
 				message = "We've got ourselves a winner!";
 				currentState = IS_FINISHED;
 			}
+			
 		}
 		setChanged();
 		notifyObservers();
+		System.out.println("My turn");
+		System.out.println(gameGrid);
 	}
 	
 	/**
@@ -145,11 +150,13 @@ public class GomokuGameState extends Observable implements Observer{
 		this.gameGrid.move(x,y,2);
 
 		if (this.gameGrid.isWinner(2)) {
-			message = "We've got ourselves a winner!";
+			message = "You Loose!";
 			currentState = IS_FINISHED;
 		}
 		setChanged();
 		notifyObservers();
+		System.out.println("Others turn");
+		System.out.println(gameGrid);
 	}
 	
 	public void update(Observable o, Object arg) {

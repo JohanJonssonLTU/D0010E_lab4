@@ -18,6 +18,9 @@ public class GomokuMain {
 		GomokuGameState gomokuGameState = new GomokuGameState(gomokuClient);
 		GomokuGUI gomokuGUI = new GomokuGUI(gomokuGameState, gomokuClient);
 		
+		gomokuGameState.move(2, 2);
+		gomokuGameState.receivedMove(3,2);
+		
 	}
 
 }
