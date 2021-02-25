@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -48,7 +49,7 @@ public class GomokuGUI implements Observer{
 		this.messageLabel = new JLabel(gamestate.getMessageString());
 		
 		JFrame frame = new JFrame("Gumoku");
-//		frame.setMinimumSize(new Dimension(300, 350));
+//		frame.setMinimumSize(new Dimension(800, 800));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocation(700,200);
 		frame.setVisible(true);
@@ -68,20 +69,19 @@ public class GomokuGUI implements Observer{
 		SpringLayout layout = new SpringLayout();
 		panel.setLayout(layout);
 		
-		layout.putConstraint(SpringLayout.NORTH, gamePanel, 10, SpringLayout.NORTH, frame);
-		layout.putConstraint(SpringLayout.WEST, gamePanel, 10, SpringLayout.WEST, frame);
+		layout.putConstraint(SpringLayout.NORTH, gamePanel, 10, SpringLayout.NORTH, panel);
 		
-		layout.putConstraint(SpringLayout.SOUTH, connectButton, 10, SpringLayout.SOUTH, frame);
-		layout.putConstraint(SpringLayout.WEST, connectButton, 10, SpringLayout.EAST, disconnectButton);
-		layout.putConstraint(SpringLayout.SOUTH, connectButton, -10, SpringLayout.NORTH, messageLabel);
+		layout.putConstraint(SpringLayout.NORTH, connectButton, 10, SpringLayout.SOUTH, gamePanel);
+		layout.putConstraint(SpringLayout.WEST, connectButton, 5, SpringLayout.WEST, panel);
 		
-		layout.putConstraint(SpringLayout.SOUTH, connectButton, 10, SpringLayout.SOUTH, frame);
+		layout.putConstraint(SpringLayout.NORTH, newGameButton, 10, SpringLayout.SOUTH, gamePanel);
 		layout.putConstraint(SpringLayout.WEST, newGameButton, 10, SpringLayout.EAST, connectButton);
 		
-		layout.putConstraint(SpringLayout.WEST, disconnectButton, -10, SpringLayout.EAST, messageLabel);
+		layout.putConstraint(SpringLayout.NORTH, disconnectButton, 10, SpringLayout.SOUTH, gamePanel);
+		layout.putConstraint(SpringLayout.WEST, disconnectButton, 10, SpringLayout.EAST, newGameButton);
 		
-		layout.putConstraint(SpringLayout.SOUTH, messageLabel, -10, SpringLayout.NORTH, frame);
-		layout.putConstraint(SpringLayout.WEST, messageLabel, -10, SpringLayout.EAST, frame);
+		layout.putConstraint(SpringLayout.NORTH, messageLabel, 10, SpringLayout.SOUTH, connectButton);
+		layout.putConstraint(SpringLayout.WEST, messageLabel, 10, SpringLayout.WEST, panel);
 		
 		connectButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -107,9 +107,50 @@ public class GomokuGUI implements Observer{
 	}
 	
 	class gameGridPanelAction extends MouseAdapter{
-		public void mouseClicked(MouseEvent e) {
-			gamestate.move(50, 50);
-		}
+		
+		/**
+     * {@inheritDoc}
+     */
+    public void mouseClicked(MouseEvent e) {}
+
+    /**
+     * {@inheritDoc}
+     */
+    public void mousePressed(MouseEvent e) {}
+
+    /**
+     * {@inheritDoc}
+     */
+    public void mouseReleased(MouseEvent e) {}
+
+    /**
+     * {@inheritDoc}
+     */
+    public void mouseEntered(MouseEvent e) {}
+
+    /**
+     * {@inheritDoc}
+     */
+    public void mouseExited(MouseEvent e) {}
+
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     */
+    public void mouseWheelMoved(MouseWheelEvent e){}
+
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     */
+    public void mouseDragged(MouseEvent e){}
+
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     */
+    public void mouseMoved(MouseEvent e){}
+		
 	}
 	
 	public void update(Observable arg0, Object arg1) {
