@@ -101,57 +101,19 @@ public class GomokuGUI implements Observer{
 			}
 		});
 		
+		gamePanel.addMouseListener(new MouseAdapter() {
+			public void mouseClicked() {
+				
+			}
+		});
+		
+		
+		
 		client.addObserver(this);
 		gamestate.addObserver(this);
 				
 	}
 	
-	class gameGridPanelAction extends MouseAdapter{
-		
-		/**
-     * {@inheritDoc}
-     */
-    public void mouseClicked(MouseEvent e) {}
-
-    /**
-     * {@inheritDoc}
-     */
-    public void mousePressed(MouseEvent e) {}
-
-    /**
-     * {@inheritDoc}
-     */
-    public void mouseReleased(MouseEvent e) {}
-
-    /**
-     * {@inheritDoc}
-     */
-    public void mouseEntered(MouseEvent e) {}
-
-    /**
-     * {@inheritDoc}
-     */
-    public void mouseExited(MouseEvent e) {}
-
-    /**
-     * {@inheritDoc}
-     * @since 1.6
-     */
-    public void mouseWheelMoved(MouseWheelEvent e){}
-
-    /**
-     * {@inheritDoc}
-     * @since 1.6
-     */
-    public void mouseDragged(MouseEvent e){}
-
-    /**
-     * {@inheritDoc}
-     * @since 1.6
-     */
-    public void mouseMoved(MouseEvent e){}
-		
-	}
 	
 	public void update(Observable arg0, Object arg1) {
 		
