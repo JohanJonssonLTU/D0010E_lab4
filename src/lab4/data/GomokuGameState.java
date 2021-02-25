@@ -21,11 +21,11 @@ public class GomokuGameState extends Observable implements Observer{
 	private final int NOT_STARTED = 0;
 	private int currentState;
 	private int MY_TURN = 1;
-	private int OTHER_TURN = 2;
-	private int IS_FINISHED = 3;
+	private int OTHER_TURN = -1;
+	private int IS_FINISHED = 0;
 	private GomokuClient client;
 	
-	private String message;
+	private String message = "Welcome To Gomoku!";
 	
 	/**
 	 * The constructor
@@ -67,14 +67,18 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public void move(int x, int y){
 		
+		gameGrid.move(x, y, 1);
+		
 		if (this.client.getConnectionStatus() == 0) {
 			message = "No connection";
 		} else if (this.currentState != MY_TURN) {
 			message = "It's not your turn yet!";
+		} else if (currentState == 0) {
+			message = "No game in progress!";
 		} else if (this.gameGrid.getLocation(x, y) != 0) {
 			message = "This spot is not empty!";
 		} else {
-			this.client.sendNewGameMessage();
+			this.client.sendMoveMessage(x, y);
 			message = "A move has been made.";
 			
 			if (this.gameGrid.isWinner(1)){
@@ -86,8 +90,8 @@ public class GomokuGameState extends Observable implements Observer{
 		}
 		setChanged();
 		notifyObservers();
-		System.out.println("My turn");
-		System.out.println(gameGrid);
+//		System.out.println("My turn");
+//		System.out.println(gameGrid);
 	}
 	
 	/**
@@ -147,16 +151,16 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public void receivedMove(int x, int y) {
 
-		this.gameGrid.move(x,y,2);
+		this.gameGrid.move(x,y,-1);
 
-		if (this.gameGrid.isWinner(2)) {
+		if (this.gameGrid.isWinner(-1)) {
 			message = "You Loose!";
 			currentState = IS_FINISHED;
 		}
 		setChanged();
 		notifyObservers();
-		System.out.println("Others turn");
-		System.out.println(gameGrid);
+//		System.out.println("Others turn");
+//		System.out.println(gameGrid);
 	}
 	
 	public void update(Observable o, Object arg) {
@@ -175,6 +179,15 @@ public class GomokuGameState extends Observable implements Observer{
 		notifyObservers();
 		
 		
+	}
+	
+	public String toString() {
+		return 
+			"currentState = " + currentState + "\n" +
+			"MY_TURN = " + MY_TURN + "\n" +
+			"OTHER_TURN = " + OTHER_TURN + "\n" +
+			"IS_FINISHED = " + IS_FINISHED 
+			;
 	}
 	
 }

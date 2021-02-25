@@ -26,15 +26,14 @@ public class GameGrid extends Observable{
 		
 		for (int row = 0; row < size; row++){
 			my_grid.add(row, new ArrayList<Integer>());
-			System.out.println("row");
+//			System.out.println("row");
 			for (int column = 0; column < size; column++) {
 				my_grid.get(row).add(column, EMPTY);
-				System.out.println("column");
+//				System.out.println("column");
 			}
 		}
 		
-		System.out.println("init");
-		System.out.println(this);
+//		System.out.println("init");
 		
 	}
 
@@ -86,12 +85,25 @@ public class GameGrid extends Observable{
 	 * Clears the grid of pieces
 	 */
 	public void clearGrid(){
+		
+//		for (int row = 0; row < size; row++){
+//			my_grid.add(new ArrayList<>());
+//			for (int column = 0; column < size; column++) {
+//				my_grid.add(new ArrayList<>());
+//			}
+//		}
+		
+		my_grid = new ArrayList<>();
+		
 		for (int row = 0; row < size; row++){
-			my_grid.add(new ArrayList<>());
+			my_grid.add(row, new ArrayList<Integer>());
+//			System.out.println("row");
 			for (int column = 0; column < size; column++) {
-				my_grid.add(new ArrayList<>());
+				my_grid.get(row).add(column, EMPTY);
+//				System.out.println("column");
 			}
 		}
+		
 		notifyObservers();
 		setChanged();
 	}

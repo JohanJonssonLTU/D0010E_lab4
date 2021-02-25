@@ -48,7 +48,7 @@ public class GomokuGUI implements Observer{
 //		frame.setMinimumSize(new Dimension(300, 350));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocation(200,200);
+		frame.setLocation(0,0);
 		frame.setVisible(true);
 		
 		JPanel panel = new JPanel();
@@ -66,6 +66,7 @@ public class GomokuGUI implements Observer{
 		panel.setLayout(layout);
 		
 		layout.putConstraint(SpringLayout.SOUTH, gameGridPanel, -10, SpringLayout.NORTH, connectButton);
+		layout.putConstraint(SpringLayout.NORTH, gameGridPanel, -10, SpringLayout.SOUTH, panel);
 		
 		layout.putConstraint(SpringLayout.WEST, connectButton, 10, SpringLayout.WEST, panel);
 		layout.putConstraint(SpringLayout.WEST, newGameButton, 10, SpringLayout.EAST, connectButton);
