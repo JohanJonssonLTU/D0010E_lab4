@@ -49,7 +49,6 @@ public class GomokuGUI implements Observer{
 		this.messageLabel = new JLabel(gamestate.getMessageString());
 		
 		JFrame frame = new JFrame("Gumoku");
-//		frame.setMinimumSize(new Dimension(800, 800));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocation(700,200);
 		frame.setVisible(true);
@@ -106,7 +105,7 @@ public class GomokuGUI implements Observer{
 				
 				int[] coordinates = gamePanel.getGridPosition(e.getY(), e.getX());
 				
-				gamestate.newGame();
+//				gamestate.newGame();
 				gamestate.move(coordinates[0], coordinates[1]);
 			}
 		});
@@ -115,7 +114,6 @@ public class GomokuGUI implements Observer{
 		gamestate.addObserver(this);
 				
 	}
-	
 	
 	public void update(Observable arg0, Object arg1) {
 		

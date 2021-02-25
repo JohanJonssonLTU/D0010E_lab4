@@ -101,7 +101,7 @@ public class GomokuGameState extends Observable implements Observer{
 		
 		if (gameGrid.isWinner(1)){
 			client.sendNewGameMessage();
-			message = "We've got ourselves a winner!";
+			message = "You won!";
 			currentState = IS_FINISHED;
 		}
 		

@@ -9,8 +9,8 @@ import java.util.Observable;
 public class GameGrid extends Observable{
 	
 	private ArrayList<ArrayList<Integer>> my_grid = new ArrayList<>();
-//	private int[][] my_grid;
 	private int size;
+	
 	public static final int EMPTY = 0;
 	public static final int ME = 1;
 	public static final int OTHER = -1;
@@ -26,15 +26,7 @@ public class GameGrid extends Observable{
 		System.out.println("new GameGrid");
 
 		this.size = size;
-		
-//		for (int row = 0; row < size; row++){
-//			my_grid.add(row, new ArrayList<Integer>());
-////			System.out.println("row");
-//			for (int column = 0; column < size; column++) {
-//				my_grid.get(row).add(column, EMPTY);
-////				System.out.println("column");
-//			}
-//		}
+
 		clearGrid();
 		
 //		System.out.println("init");
@@ -90,13 +82,6 @@ public class GameGrid extends Observable{
 	 * Clears the grid of pieces
 	 */
 	public void clearGrid(){
-		
-//		for (int row = 0; row < size; row++){
-//			my_grid.add(new ArrayList<>());
-//			for (int column = 0; column < size; column++) {
-//				my_grid.add(new ArrayList<>());
-//			}
-//		}
 		
 		my_grid = new ArrayList<>();
 		
