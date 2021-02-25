@@ -17,6 +17,7 @@ public class GomokuGameState extends Observable implements Observer{
    // Game variables
 	private final int DEFAULT_SIZE = 15;
 	private GameGrid gameGrid;
+	
     //Possible game states
 	private final int NOT_STARTED = 0;
 	private int currentState;
@@ -92,24 +93,31 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public void move(int x, int y){
 		
-		gameGrid.move(x, y, 1);
-		currentState = OTHER_TURN;
-		
-		if (gameGrid.isWinner(1)){
-			client.sendNewGameMessage();
-			message = "We've got ourselves a winner!";
-			currentState = IS_FINISHED;
-		}
+//		gameGrid.move(x, y, 1);
+//		currentState = OTHER_TURN;
+//		
+//		if (gameGrid.isWinner(1)){
+//			client.sendNewGameMessage();
+//			message = "We've got ourselves a winner!";
+//			currentState = IS_FINISHED;
+//		}
 		
 		if (client.getConnectionStatus() == 0) {
 			message = "No connection";
+			System.out.println("No connection");
 		} else if (currentState != MY_TURN) {
 			message = "It's not your turn yet!";
+			System.out.println("It's not your turn yet!");
 		} else if (currentState == 0) {
 			message = "No game in progress!";
+			System.out.println("No game in progress!");
 		} else if (gameGrid.getLocation(x, y) != 0) {
 			message = "This spot is not empty!";
+			System.out.println("This spot is not empty!");
 		} else {
+			
+			gameGrid.move(x, y, 1);
+			currentState = OTHER_TURN;
 			client.sendMoveMessage(x, y);
 			message = "A move has been made.";
 			
@@ -190,9 +198,9 @@ public class GomokuGameState extends Observable implements Observer{
 	public String toString() {
 		return 
 			"currentState = " + currentState + "\n" +
-			"MY_TURN = " + MY_TURN + "\n" +
-			"OTHER_TURN = " + OTHER_TURN + "\n" +
-			"IS_FINISHED = " + IS_FINISHED 
+			MY_TURN + " = MY_TURN" + "\n" +
+			OTHER_TURN + " = OTHER_TURN" + "\n" +
+			IS_FINISHED + " = IS_FINISHED" 
 			;
 	}
 	

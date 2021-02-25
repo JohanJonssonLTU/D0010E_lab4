@@ -7,6 +7,7 @@ import java.util.Observable;
  */
 
 public class GameGrid extends Observable{
+	
 	private ArrayList<ArrayList<Integer>> my_grid = new ArrayList<>();
 //	private int[][] my_grid;
 	private int size;
@@ -70,6 +71,7 @@ public class GameGrid extends Observable{
 	 * @return true if the insertion worked, false otherwise
 	 */
 	public boolean move(int x, int y, int player){
+		
 		if (my_grid.get(y).get(x) == EMPTY) {
 			my_grid.get(y).set(x, player);
 			notifyObservers();
@@ -200,6 +202,8 @@ public class GameGrid extends Observable{
 			}
 			theMatrix += "\n";
 		}
+		
+		theMatrix += "Size = " + getSize();
 		
 		return theMatrix;
 		

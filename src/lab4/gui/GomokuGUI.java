@@ -42,7 +42,7 @@ public class GomokuGUI implements Observer{
 		this.client = c;
 		this.gamestate = g;
 
-		this.messageLabel = new JLabel("test");
+		this.messageLabel = new JLabel(gamestate.getMessageString());
 		
 		JFrame frame = new JFrame("Gumoku");
 //		frame.setMinimumSize(new Dimension(300, 350));
@@ -52,10 +52,9 @@ public class GomokuGUI implements Observer{
 		frame.setVisible(true);
 		
 		JPanel panel = new JPanel();
-		GameGrid gameGrid = new GameGrid(0);
-		GamePanel gameGridPanel = new GamePanel(gameGrid);
+		GamePanel gamePanel = new GamePanel(gamestate.getGameGrid());
 		
-		panel.add(gameGridPanel);
+		panel.add(gamePanel);
 		panel.add(connectButton);
 		panel.add(newGameButton);
 		panel.add(disconnectButton);
@@ -65,8 +64,9 @@ public class GomokuGUI implements Observer{
 		SpringLayout layout = new SpringLayout();
 		panel.setLayout(layout);
 		
-		layout.putConstraint(SpringLayout.SOUTH, gameGridPanel, -10, SpringLayout.NORTH, connectButton);
-		layout.putConstraint(SpringLayout.NORTH, gameGridPanel, -10, SpringLayout.SOUTH, panel);
+		layout.putConstraint(SpringLayout.SOUTH, gamePanel, 10, SpringLayout.NORTH, connectButton);
+		layout.putConstraint(SpringLayout.NORTH, gamePanel, -10, SpringLayout.SOUTH, panel);
+		layout.putConstraint(SpringLayout.WEST, gamePanel, -10, SpringLayout.WEST, panel);
 		
 		layout.putConstraint(SpringLayout.WEST, connectButton, 10, SpringLayout.WEST, panel);
 		layout.putConstraint(SpringLayout.WEST, newGameButton, 10, SpringLayout.EAST, connectButton);
