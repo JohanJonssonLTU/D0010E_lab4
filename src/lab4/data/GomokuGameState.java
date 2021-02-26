@@ -26,7 +26,7 @@ public class GomokuGameState extends Observable implements Observer{
 	private int IS_FINISHED = 0;
 	private GomokuClient client;
 	
-	private String message = "Welcome To Gomoku!";
+	private String message = "Welcome to Gomoku!";
 	
 	/**
 	 * The constructor
@@ -128,7 +128,8 @@ public class GomokuGameState extends Observable implements Observer{
 		}
 		setChanged();
 		notifyObservers();
-		System.out.println("My turn");
+//		System.out.println("My turn");
+		System.out.println(this);
 		System.out.println(gameGrid);
 	}
 	
@@ -140,9 +141,9 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public void receivedMove(int x, int y) {
 		
-		System.out.println("GomokuGameState().receivedMove()");
+//		System.out.println("GomokuGameState().receivedMove()");
 
-		gameGrid.move(x, y,-1);
+		gameGrid.move(x, y, -1);
 		currentState = MY_TURN;
 		message = "Your turn";
 		
@@ -152,7 +153,8 @@ public class GomokuGameState extends Observable implements Observer{
 		}
 		setChanged();
 		notifyObservers();
-		System.out.println("Others turn");
+//		System.out.println("Others turn");
+		System.out.println(this);
 		System.out.println(gameGrid);
 	}
 	
@@ -162,7 +164,7 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public void otherGuyLeft(){
 		
-		System.out.println("GomokuGameState().otherGuyLeft()");
+//		System.out.println("GomokuGameState().otherGuyLeft()");
 		
 		client.disconnect();
 		gameGrid.clearGrid();
@@ -177,7 +179,7 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public void disconnect(){
 		
-		System.out.println("GomokuGameState().disconnect()");
+//		System.out.println("GomokuGameState().disconnect()");
 		
 		client.disconnect();
 		gameGrid.clearGrid();
@@ -189,7 +191,7 @@ public class GomokuGameState extends Observable implements Observer{
 	
 	public void update(Observable o, Object arg) {
 		
-		System.out.println("GomokuGameState().update()");
+//		System.out.println("GomokuGameState().update()");
 		
 		switch(client.getConnectionStatus()){
 		case GomokuClient.CLIENT:

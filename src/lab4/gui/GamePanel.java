@@ -76,36 +76,64 @@ public class GamePanel extends JPanel implements Observer{
 		
 		super.paintComponent(g);
 		
-		for (int row = 0; row < grid.getSize(); row++) {
+		for (int y = 0; y < grid.getSize(); y++) {
 			
-			for (int column = 0; column < grid.getSize(); column++) {
+//			if (grid.getLocation(0, y) == 0) {
+//				g.setColor(Color.BLACK);
+//				g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+//				g.setColor(Color.WHITE);
+//				g.fillRect(UNIT_SIZE*0+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
+//			}
+//			
+//			if (grid.getLocation(0, y) == 1) {
+//				g.setColor(Color.BLACK);
+//				g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+//				g.setColor(Color.WHITE);
+//				g.fillRect(UNIT_SIZE*0+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
+//				g.setColor(Color.BLACK);
+//				g.drawOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+//				g.fillOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+//			}
+//			
+//			if (grid.getLocation(0, y) == -1) {
+//				g.setColor(Color.BLACK);
+//				g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+//				g.setColor(Color.WHITE);
+//				g.fillRect(UNIT_SIZE*0+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
+//				g.setColor(Color.BLACK);
+//				g.drawOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+//				g.setColor(Color.WHITE);
+//				g.fillOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+//			}
+			
+			for (int x = 0; x < grid.getSize(); x++) {
 				
-				if (grid.getLocation(row, column) == 0) {
+				if (grid.getLocation(x, y) == 0) {
 					g.setColor(Color.BLACK);
-					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.WHITE);
-					g.fillRect(UNIT_SIZE*row+1, UNIT_SIZE*column+1, UNIT_SIZE-2, UNIT_SIZE-2);
+					g.fillRect(UNIT_SIZE*x+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
 				}
 				
-				if (grid.getLocation(row, column) == 1) {
+				if (grid.getLocation(x, y) == 1) {
 					g.setColor(Color.BLACK);
-					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.WHITE);
-					g.fillRect(UNIT_SIZE*row+1, UNIT_SIZE*column+1, UNIT_SIZE-2, UNIT_SIZE-2);
+					g.fillRect(UNIT_SIZE*x+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
 					g.setColor(Color.BLACK);
-					g.drawOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
-					g.fillOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.drawOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+					g.fillOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 				}
 				
-				if (grid.getLocation(row, column) == -1) {
+				if (grid.getLocation(x, y) == -1) {
 					g.setColor(Color.BLACK);
-					g.drawRect(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.WHITE);
-					g.fillRect(UNIT_SIZE*row+1, UNIT_SIZE*column+1, UNIT_SIZE-2, UNIT_SIZE-2);
+					g.fillRect(UNIT_SIZE*x+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
 					g.setColor(Color.BLACK);
-					g.drawOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.drawOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.WHITE);
-					g.fillOval(UNIT_SIZE*row, UNIT_SIZE*column, UNIT_SIZE, UNIT_SIZE);
+					g.fillOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 				}
 					
 			}

@@ -71,7 +71,8 @@ public class GomokuGUI implements Observer{
 		panel.setLayout(layout);
 
 		layout.putConstraint(SpringLayout.NORTH, gamePanel, 10, SpringLayout.NORTH, panel);
-		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, gamePanel, 0, SpringLayout.HORIZONTAL_CENTER, panel);
+		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, gamePanel, 0, 
+			SpringLayout.HORIZONTAL_CENTER, panel);
 		
 		layout.putConstraint(SpringLayout.NORTH, connectButton, 10, SpringLayout.SOUTH, gamePanel);
 		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, connectButton, -107, 
