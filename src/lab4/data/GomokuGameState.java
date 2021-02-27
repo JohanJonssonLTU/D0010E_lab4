@@ -82,6 +82,7 @@ public class GomokuGameState extends Observable implements Observer{
 	 * game state is changed accordingly
 	 */
 	public void receivedNewGame(){
+		
 		gameGrid.clearGrid();
 		currentState = MY_TURN;
 		message = "New game, it's your turn";
@@ -166,7 +167,7 @@ public class GomokuGameState extends Observable implements Observer{
 //		System.out.println("GomokuGameState().otherGuyLeft()");
 		
 		client.getConnectionStatus();
-//		gameGrid.clearGrid();
+		gameGrid.clearGrid();
 		currentState = NOT_STARTED;
 		message = "The other player has disconnected.";
 		notifyObservers();
@@ -182,7 +183,7 @@ public class GomokuGameState extends Observable implements Observer{
 		
 //		client.getConnectionStatus();
 		client.disconnect();
-//		gameGrid.clearGrid();
+		gameGrid.clearGrid();
 		currentState = NOT_STARTED;
 		message = "You have been disconnected.";
 		notifyObservers();

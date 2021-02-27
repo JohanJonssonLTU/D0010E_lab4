@@ -154,6 +154,7 @@ public class GameGrid extends Observable{
 					
 					newRow = row;
 					newColumn = column;
+					diagonalEastCounter= 0;
 					
 					while (my_grid.get(newRow).get(newColumn) == player) {
 						diagonalEastCounter++;
@@ -171,6 +172,7 @@ public class GameGrid extends Observable{
 					
 					newRow = row;
 					newColumn = column;
+					diagonalWestCounter = 0;
 					
 					while (my_grid.get(newRow).get(newColumn) == player) {
 						diagonalWestCounter++;
