@@ -134,28 +134,22 @@ public class GameGrid extends Observable{
 					rowCounter = 0;
 				}
 				
-				if (my_grid.get(row).get(column) == player) {
+				try {
 					
 					newRow = row;
 					columnCounter = 0;
 					
-					try {
-						
-						while (my_grid.get(newRow).get(column) == player) {
-							columnCounter++;
-							System.out.println("columnCounter " + columnCounter);
-							newRow++;
-							if (columnCounter == INROW) {
-								return true;
-							}
+					while (my_grid.get(newRow).get(column) == player) {
+						columnCounter++;
+						System.out.println("columnCounter " + columnCounter);
+						newRow++;
+						if (columnCounter == INROW) {
+							return true;
 						}
-						
-					} catch (IndexOutOfBoundsException e) {}
-				}
-				
-				diagonalEastCounter = 0;
-				diagonalWestCounter = 0;
-				
+					}
+					
+				} catch (IndexOutOfBoundsException e) {}
+
 				try {
 					
 					newRow = row;
