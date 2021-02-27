@@ -10,8 +10,9 @@ import lab4.client.GomokuClient;
 
 /**
  * Represents the state of a game
+ * 
+ * @author cp
  */
-
 public class GomokuGameState extends Observable implements Observer{
 
    // Game variables
@@ -113,12 +114,10 @@ public class GomokuGameState extends Observable implements Observer{
 			message = "This spot is not empty!";
 			System.out.println("This spot is not empty!");
 		} else {
-			
 			gameGrid.move(x, y, 1);
 			currentState = OTHER_TURN;
 			client.sendMoveMessage(x, y);
 			message = "Opponents turn.";
-			
 			if (gameGrid.isWinner(1)){
 				client.sendNewGameMessage();
 				message = "We've got ourselves a winner!";
@@ -145,7 +144,7 @@ public class GomokuGameState extends Observable implements Observer{
 
 		gameGrid.move(x, y, -1);
 		currentState = MY_TURN;
-		message = "Your turn";
+		message = "Your turn.";
 		
 		if (gameGrid.isWinner(-1)) {
 			message = "You Loose!";
@@ -166,8 +165,8 @@ public class GomokuGameState extends Observable implements Observer{
 		
 //		System.out.println("GomokuGameState().otherGuyLeft()");
 		
-		client.disconnect();
-		gameGrid.clearGrid();
+		client.getConnectionStatus();
+//		gameGrid.clearGrid();
 		currentState = NOT_STARTED;
 		message = "The other player has disconnected.";
 		notifyObservers();
@@ -181,8 +180,9 @@ public class GomokuGameState extends Observable implements Observer{
 		
 //		System.out.println("GomokuGameState().disconnect()");
 		
+//		client.getConnectionStatus();
 		client.disconnect();
-		gameGrid.clearGrid();
+//		gameGrid.clearGrid();
 		currentState = NOT_STARTED;
 		message = "You have been disconnected.";
 		notifyObservers();

@@ -18,6 +18,11 @@ import lab4.data.GameGrid;
 
 public class GamePanel extends JPanel implements Observer{
 
+	/**
+	 * The dimensions of a game grid square.
+	 * 
+	 * @author jj
+	 */
 	public final int UNIT_SIZE = 20;
 	private GameGrid grid;
 	Dimension d;
@@ -57,6 +62,11 @@ public class GamePanel extends JPanel implements Observer{
 		return gridPosition;
 	}
 	
+	/**
+	 * Repaints the main game window.
+	 * 
+	 * @author jj
+	 */
 	public void update(Observable arg0, Object arg1) {
 		
 		System.out.println("GamePanel.update()");
@@ -65,7 +75,8 @@ public class GamePanel extends JPanel implements Observer{
 	}
 	
 	/**
-	 * Iterates over a 2-dimensional ArrayList and paints adjecent squares according to indices. 
+	 * Iterates over a 2-dimensional ArrayList and paints adjecent, 
+	 * framed squares according to indices. 
 	 * 
 	 * @author jj
 	 */
@@ -77,63 +88,35 @@ public class GamePanel extends JPanel implements Observer{
 		super.paintComponent(g);
 		
 		for (int y = 0; y < grid.getSize(); y++) {
-			
-//			if (grid.getLocation(0, y) == 0) {
-//				g.setColor(Color.BLACK);
-//				g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-//				g.setColor(Color.WHITE);
-//				g.fillRect(UNIT_SIZE*0+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
-//			}
-//			
-//			if (grid.getLocation(0, y) == 1) {
-//				g.setColor(Color.BLACK);
-//				g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-//				g.setColor(Color.WHITE);
-//				g.fillRect(UNIT_SIZE*0+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
-//				g.setColor(Color.BLACK);
-//				g.drawOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-//				g.fillOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-//			}
-//			
-//			if (grid.getLocation(0, y) == -1) {
-//				g.setColor(Color.BLACK);
-//				g.drawRect(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-//				g.setColor(Color.WHITE);
-//				g.fillRect(UNIT_SIZE*0+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
-//				g.setColor(Color.BLACK);
-//				g.drawOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-//				g.setColor(Color.WHITE);
-//				g.fillOval(UNIT_SIZE*0, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-//			}
-			
+						
 			for (int x = 0; x < grid.getSize(); x++) {
 				
 				if (grid.getLocation(x, y) == 0) {
+					g.setColor(Color.WHITE);
+					g.fillRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.BLACK);
 					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
-					g.setColor(Color.WHITE);
-					g.fillRect(UNIT_SIZE*x+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
 				}
 				
 				if (grid.getLocation(x, y) == 1) {
-					g.setColor(Color.BLACK);
-					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.WHITE);
-					g.fillRect(UNIT_SIZE*x+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
+					g.fillRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.BLACK);
 					g.drawOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.fillOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+					g.setColor(Color.BLACK);
+					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 				}
 				
 				if (grid.getLocation(x, y) == -1) {
-					g.setColor(Color.BLACK);
-					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.WHITE);
-					g.fillRect(UNIT_SIZE*x+1, UNIT_SIZE*y+1, UNIT_SIZE-2, UNIT_SIZE-2);
+					g.fillRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.BLACK);
 					g.drawOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 					g.setColor(Color.WHITE);
 					g.fillOval(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+					g.setColor(Color.BLACK);
+					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 				}
 					
 			}

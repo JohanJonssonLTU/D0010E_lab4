@@ -16,10 +16,12 @@ import javax.swing.SpringLayout;
 import lab4.client.GomokuClient;
 import lab4.data.GomokuGameState;
 
-/*
+/**
  * The GUI class
+ * 
+ * 
+ * @author jj
  */
-
 public class GomokuGUI implements Observer{
 
 	private GomokuClient client;
@@ -89,18 +91,33 @@ public class GomokuGUI implements Observer{
 			SpringLayout.HORIZONTAL_CENTER, newGameButton);
 		
 		connectButton.addActionListener(new ActionListener() {
+			/**
+			 * Initiates a connection window when button "Connect" is depressed.
+			 * 
+			 * @author jj
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				ConnectionWindow connectionWindow = new ConnectionWindow(client);
 			}
 		});
 		
 		newGameButton.addActionListener(new ActionListener() {
+			/**
+			 * Starts a new game when button "New Game" is depressed.
+			 * 
+			 * @author jj
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				gamestate.newGame();
 			}
 		});
 		
 		disconnectButton.addActionListener(new ActionListener() {
+			/**
+			 * 
+			 * 
+			 * @author jj
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				gamestate.disconnect();
 			}
